@@ -15,7 +15,7 @@ const Profile = () => {
     username: "",
     email: "",
     mobilenum: "",
-    upikey: "", // Added UPI ID
+    upiKey: "", // Added UPI ID
   });
   const [profilePic, setProfilePic] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -32,7 +32,7 @@ const Profile = () => {
           username: res.data.username || "",
           email: res.data.email || "",
           mobilenum: res.data.mobilenum || "",
-          upikey: res.data.upikey || "", // Set UPI ID from response
+          upiKey: res.data.upiKey || "", // Set UPI ID from response
         });
       } catch (err) {
         toast.error("Failed to load profile");
@@ -54,7 +54,7 @@ const Profile = () => {
       formDataToSend.append("username", formData.username);
       formDataToSend.append("email", formData.email);
       formDataToSend.append("mobilenum", formData.mobilenum);
-      formDataToSend.append("upikey", formData.upikey); //  Send UPI ID
+      formDataToSend.append("upiKey", formData.upiKey); //  Send UPI ID
       if (profilePic) formDataToSend.append("profilePic", profilePic);
 
       const res = await axios.put(
@@ -153,8 +153,8 @@ const Profile = () => {
                     />
                     <input
                       type="text"
-                      value={formData.upikey}
-                      onChange={(e) => setFormData({ ...formData, upikey: e.target.value })}
+                      value={formData.upiKey}
+                      onChange={(e) => setFormData({ ...formData, upiKey: e.target.value })}
                       placeholder="Enter UPI ID"
                     />
                   </>
@@ -163,7 +163,7 @@ const Profile = () => {
                     <h2>{user?.username}</h2>
                     <p className="profile-detail"><FiMail /> {user?.email}</p>
                     <p className="profile-detail"><FiPhone /> {user?.mobilenum || "Not Provided"}</p>
-                    <p className="profile-detail">🪙 UPI ID: {user?.upikey || "Not Provided"}</p>
+                    <p className="profile-detail">🪙 UPI ID: {user?.upiKey || "Not Provided"}</p>
                   </>
                 )}
               </motion.div>
