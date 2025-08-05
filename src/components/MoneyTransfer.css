@@ -1,6 +1,7 @@
 .money-transfer-container {
   display: flex;
   justify-content: center;
+  align-items:centre;
   padding: 20px;
    background: radial-gradient(circle at 20% 20%, #090e1a, #020617 80%);
   min-height: 60vh;
