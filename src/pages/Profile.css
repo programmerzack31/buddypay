@@ -1,6 +1,6 @@
 /* Container */
 .profile-container {
-  min-height: 70vh;
+  min-height: 85vh;
     background: radial-gradient(circle at 20% 20%, #090e1a, #020617 80%);
   display: flex;
   justify-content: center;
