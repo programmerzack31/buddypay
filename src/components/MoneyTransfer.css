@@ -1,5 +1,5 @@
 .money-transfer-container {
-  min-height: 80vh;
+  min-height: 75vh;
   display: flex;
   justify-content: center;
   align-items:centre;
@@ -11,7 +11,7 @@
 .money-form {
   background: #1e1e1e;
   padding: 25px;
-  height:550px;
+  height:500px;
   border-radius: 16px;
   width: 100%;
   max-width: 400px;
