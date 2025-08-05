@@ -17,7 +17,7 @@ const Login = () => {
     e.preventDefault();
     try {
       const res = await axios.post(
-        `${import.meta.env.VITE_API_URL}/api/buddypay/login`,
+        `https://buddypayback.onrender.com/api/buddypay/login`,
         credentials
       );
 
