@@ -11,14 +11,18 @@ import "./Profile.css";
 const Profile = () => {
   const [user, setUser] = useState(null);
   const [editMode, setEditMode] = useState(false);
-  const [formData, setFormData] = useState({ username: "", email: "", mobilenum: "" });
+  const [formData, setFormData] = useState({
+    username: "",
+    email: "",
+    mobilenum: "",
+    upiId: "", // Added UPI ID
+  });
   const [profilePic, setProfilePic] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  // Default avatar image
-  const defaultAvatar = "/defaultavatar.png"; // public folder me rakho
+  const defaultAvatar = "/defaultavatar.png";
 
-  //  Fetch profile data
+  // Fetch user profile from backend
   useEffect(() => {
     const fetchProfile = async () => {
       try {
@@ -28,6 +32,7 @@ const Profile = () => {
           username: res.data.username || "",
           email: res.data.email || "",
           mobilenum: res.data.mobilenum || "",
+          upiId: res.data.upiId || "", // Set UPI ID from response
         });
       } catch (err) {
         toast.error("Failed to load profile");
@@ -39,16 +44,17 @@ const Profile = () => {
     fetchProfile();
   }, []);
 
-  
+  // File change handler
   const handleFileChange = (e) => setProfilePic(e.target.files[0]);
 
-
+  // Save handler
   const handleSave = async () => {
     try {
       const formDataToSend = new FormData();
       formDataToSend.append("username", formData.username);
       formDataToSend.append("email", formData.email);
       formDataToSend.append("mobilenum", formData.mobilenum);
+      formDataToSend.append("upiId", formData.upiId); //  Send UPI ID
       if (profilePic) formDataToSend.append("profilePic", profilePic);
 
       const res = await axios.put(
@@ -57,7 +63,7 @@ const Profile = () => {
         { headers: { "Content-Type": "multipart/form-data" } }
       );
 
-      setUser(res.data.updatedUser);  
+      setUser(res.data.updatedUser);
       toast.success("Profile updated successfully");
       setEditMode(false);
       setProfilePic(null);
@@ -87,20 +93,19 @@ const Profile = () => {
             </>
           ) : (
             <>
-              {/* {/Profile Pic */} 
+              {/* Profile Picture */}
               <div className="profile-pic-container">
                 <img
                   src={
                     profilePic
-                      ? URL.createObjectURL(profilePic) // new pic preview
+                      ? URL.createObjectURL(profilePic)
                       : user?.profilePic
-                      ? `${import.meta.env.VITE_API_URL}/${user.profilePic}` // backend pic
-                      : defaultAvatar // fallback
+                      ? `${import.meta.env.VITE_API_URL}/${user.profilePic}`
+                      : defaultAvatar
                   }
                   alt="Profile"
                   className="profile-pic"
                 />
-
                 {editMode && (
                   <>
                     <label htmlFor="profilePic" className="edit-icon">
@@ -117,7 +122,7 @@ const Profile = () => {
                 )}
               </div>
 
-              {/* ✅ Profile Info */}
+              {/* Profile Info */}
               <motion.div
                 key={editMode ? "edit" : "view"}
                 initial={{ opacity: 0, y: 20 }}
@@ -146,17 +151,24 @@ const Profile = () => {
                       onChange={(e) => setFormData({ ...formData, mobilenum: e.target.value })}
                       placeholder="Enter mobile number"
                     />
+                    <input
+                      type="text"
+                      value={formData.upiId}
+                      onChange={(e) => setFormData({ ...formData, upiId: e.target.value })}
+                      placeholder="Enter UPI ID"
+                    />
                   </>
                 ) : (
                   <>
                     <h2>{user?.username}</h2>
                     <p className="profile-detail"><FiMail /> {user?.email}</p>
                     <p className="profile-detail"><FiPhone /> {user?.mobilenum || "Not Provided"}</p>
+                    <p className="profile-detail">🪙 UPI ID: {user?.upiId || "Not Provided"}</p>
                   </>
                 )}
               </motion.div>
 
-              {/* ✅ Actions */}
+              {/* Actions */}
               <div className="profile-actions">
                 {editMode ? (
                   <>
