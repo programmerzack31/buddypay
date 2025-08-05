@@ -1,0 +1,256 @@
+.money-transfer-container {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+   background: radial-gradient(circle at 20% 20%, #090e1a, #020617 80%);
+  min-height: 100vh;
+}
+
+.money-form {
+  background: #1e1e1e;
+  padding: 25px;
+  border-radius: 16px;
+  width: 100%;
+  max-width: 400px;;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.4);
+}
+
+.money-title {
+  color: #fff;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.money-input {
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #333;
+  background: #222;
+  color: #fff;
+  font-size: 16px;
+}
+
+.money-input:focus {
+  border-color: #6c17ff;
+  outline: none;
+  transition: all .2s;
+}
+
+.money-status {
+  color: #ffa726;
+  font-size: 14px;
+}
+
+.money-receiver {
+  color: #80cbc4;
+  font-size: 14px;
+}
+
+.money-button {
+  background: #6716ff;
+  color: #fff;
+  border: none;
+  padding: 12px;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.money-button:hover {
+  background: #7e39ff;
+}
+
+/* .success-popup {
+  position: fixed;
+  bottom: 30px;
+  background: #4caf50;
+  color: white;
+  padding: 15px 25px;
+  border-radius: 30px;
+  font-size: 18px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.3);
+} */
+/* ✅ Password Popup */
+.password-popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  padding: 20px 25px;
+  border-radius: 12px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.25);
+  z-index: 999;
+  text-align: center;
+  width: 300px;
+}
+
+.password-popup h4 {
+  margin-bottom: 15px;
+  font-size: 18px;
+  color: #333;
+}
+
+.password-popup .money-input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+
+.password-popup .money-input:focus {
+  border-color: #4CAF50;
+}
+
+/* ✅ Popup Buttons */
+.popup-buttons {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.popup-cancel,
+.popup-confirm {
+  flex: 1;
+  padding: 8px 0;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 15px;
+  transition: background 0.2s ease;
+}
+
+.popup-cancel {
+  background: #ccc;
+  color: #333;
+}
+
+.popup-cancel:hover {
+  background: #b3b3b3;
+}
+
+.popup-confirm {
+  background: #4CAF50;
+  color: white;
+}
+
+.popup-confirm:hover {
+  background: #45a049;
+}
+
+
+.success-popup {
+  position: fixed !important;
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%) !important;
+  z-index: 9999;
+  background: rgb(126, 40, 255);
+  padding: 20px 30px;
+  border-radius: 12px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  min-width: 300px;
+  transition: all .2s ease-in-out;
+
+}
+.password-popup {
+  position: fixed !important;
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%) !important;
+  z-index: 9999;
+  background: #1e1e2f; /* Dark background */
+  color: #ffffff; /* Light text */
+  padding: 20px 30px;
+  border-radius: 12px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+  text-align: center;
+  min-width: 320px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Password input inside popup */
+.password-popup input {
+  background: #2b2b3d;
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 10px 12px;
+  margin-top: 10px;
+  width: 90%;
+  border-radius: 6px;
+  outline: none;
+}
+.password-popup h4{
+  color: white;
+}
+
+/* Buttons in popup */
+.popup-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15px;
+}
+
+.popup-buttons button {
+  flex: 1;
+  margin: 0 5px;
+  padding: 8px 0;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+  border: none;
+  transition: 0.2s;
+}
+
+.popup-cancel {
+  background: #444;
+  color: #ddd;
+}
+
+.popup-cancel:hover {
+  background: #555;
+}
+
+.popup-confirm {
+  background: #6c63ff;
+  color: white;
+}
+
+.popup-confirm:hover {
+  background: #5548e5;
+}
+
+
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(6px);
+  z-index: 9998;
+  transition: ease-in-out;
+}
+
+
+
+@media (max-width: 480px) {
+  .money-form {
+    padding: 20px;
+    border-radius: 12px;
+  }
+  .money-input, .money-button {
+    font-size: 14px;
+    padding: 10px;
+  }
+}

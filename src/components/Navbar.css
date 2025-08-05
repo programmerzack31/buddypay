@@ -1,0 +1,251 @@
+/* Base Navbar - Dark Mode Only */
+.navbar {
+  height: 75px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 40px;
+  background: #1f1f1f;
+  color: white;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.navbar-logo {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #7c3aed;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.navbar-logo:hover {
+  color: #9f67ff;
+}
+
+.navbar-links {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  transition: 0.3s;
+}
+
+.navbar-link {
+  text-decoration: none;
+  color: white;
+  font-weight: 500;
+  transition: 0.3s;
+}
+
+.navbar-link:hover {
+  color: #7c3aed;
+}
+
+.navbar-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #7c3aed;
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+.logout-button {
+  margin-left: 10px;
+  background: #ef4444;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: 0.3s;
+}
+
+.logout-button:hover {
+  background: #dc2626;
+}
+
+/* ---------------------- */
+/* Responsive Styles */
+/* ---------------------- */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  gap: 5px;
+}
+
+.bar {
+  width: 25px;
+  height: 3px;
+  background: white;
+  transition: 0.3s;
+}
+
+/* Hamburger animation */
+.rotate1 { transform: rotate(45deg) translateY(8px); }
+.rotate2 { transform: rotate(-45deg) translateY(-8px); }
+.fade { opacity: 0; }
+
+/* Mobile Menu Animation */
+@media (max-width: 768px) {
+  .hamburger {
+    display: flex;
+  }
+
+  .navbar-links {
+    position: absolute;
+    top: 65px;
+    right: 0;
+    width: 220px;
+    background: #1f1f1f;
+    flex-direction: column;
+    gap: 15px;
+    padding: 20px;
+    border-radius: 0 0 0 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+    transform: translateY(-20px);
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.4s ease;
+  }
+
+  .navbar-links.active {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .navbar-avatar { margin: 0; }
+  .logout-button { width: 100%; }
+}
+
+/* ---------------------- */
+/* Logout Confirmation Modal */
+/* ---------------------- */
+.logout-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  animation: fadeIn 0.3s ease;
+}
+
+.logout-modal {
+  background: #2a2a2a;
+  color: white;
+  padding: 25px 30px;
+  border-radius: 12px;
+  text-align: center;
+  width: 300px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  animation: slideDown 0.3s ease;
+}
+
+.logout-modal h3 {
+  margin-bottom: 20px;
+  font-size: 18px;
+  color: white;
+}
+
+.logout-buttons {
+  display: flex;
+  justify-content: space-around;
+}
+
+.cancel-btn {
+  background: #444;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.cancel-btn:hover { background: #666; }
+
+.confirm-btn {
+  background: #ef4444;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.confirm-btn:hover { background: #dc2626; }
+
+/* Animations */
+@keyframes slideDown {
+  from { transform: translateY(-30px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Notification Bell */
+.notification-container {
+  position: relative;
+  margin-left: 15px;
+  cursor: pointer;
+}
+
+.notification-icon {
+  font-size: 1.5rem;
+  color: #7c3aed;
+}
+
+.notification-badge {
+  position: absolute;
+  top: -5px;
+  right: -8px;
+  background: #ef4444;
+  color: white;
+  border-radius: 50%;
+  padding: 3px 6px;
+  font-size: 0.7rem;
+}
+
+.notification-dropdown {
+  position: absolute;
+  top: 30px;
+  right: 0;
+  background: #2a2a2a;
+  color: white;
+  width: 220px;
+  border-radius: 8px;
+  border: 1px solid #444;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+  padding: 10px;
+  animation: fadeIn 0.3s ease;
+  z-index: 1500;
+}
+
+.notification-dropdown p {
+  padding: 8px 10px;
+  margin: 0;
+  font-size: 0.9rem;
+  border-bottom: 1px solid #444;
+}
+
+.notification-dropdown p:last-child { border-bottom: none; }
+.logo-img {
+  height: 80%;
+  width: 170px;
+  object-fit: contain;
+}

@@ -1,0 +1,28 @@
+.user-info-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.user-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.user-name {
+  font-weight: 600;
+  color: #1f2937; /* gray-900 */
+  margin: 0;
+}
+
+.user-email {
+  font-size: 0.875rem;
+  color: #6b7280; /* gray-500 */
+  margin: 2px 0 0 0;
+}

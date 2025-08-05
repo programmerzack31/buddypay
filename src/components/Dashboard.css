@@ -1,0 +1,338 @@
+/* === Premium Dashboard Dark Neon === */
+.dashboard-container {
+  min-height: 100vh;
+  background: radial-gradient(circle at 20% 20%, #090e1a, #020617 80%);
+  padding: 1.5rem;
+  font-family: 'Poppins', sans-serif;
+  color: #f8fafc;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Animated floating gradient background */
+.dashboard-container::before,
+.dashboard-container::after {
+  content: '';
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(56,189,248,0.15), transparent 70%);
+  filter: blur(120px);
+  animation: float 12s infinite ease-in-out alternate;
+  z-index: 0;
+}
+.dashboard-container::after {
+  top: 40%;
+  left: 60%;
+  background: radial-gradient(circle, rgba(167,139,250,0.15), transparent 70%);
+  animation-delay: 6s;
+}
+
+/* @keyframes float {
+  0% { transform: translateY(0px) translateX(0px); }
+  100% { transform: translateY(-60px) translateX(40px); }
+} */
+
+/* === Top Bar === */
+.top-bar {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(30, 41, 59, 0.6);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.05);
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+  border-radius: 16px;
+  /* box-shadow: 0 0 20px rgba(0, 255, 200, 0.15); */
+  z-index: 1;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.profile-pic {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #38bdf8;
+  /* box-shadow: 0 0 15px rgba(56,189,248,0.5); */
+}
+
+.username {
+  font-weight: bold;
+  color: #f8fafc;
+}
+.email {
+  color: #94a3b8;
+  font-size: 0.85rem;
+}
+
+.logout-btn {
+  background: linear-gradient(45deg, #ef4444, #f97316);
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 12px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 500;
+  box-shadow: 0 0 12px rgba(239,68,68,0.5);
+  transition: 0.3s;
+}
+.logout-btn:hover {
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 0 20px rgba(239,68,68,0.7);
+}
+
+/* === Cards === */
+.balance-card,
+.card {
+  position: relative;
+  background: rgba(30, 41, 59, 0.6);
+  backdrop-filter: blur(12px);
+  /* border: 1px solid rgba(255,255,255,0.05); */
+  border-radius: 16px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  /* box-shadow: 0 0 25px rgba(0, 255, 200, 0.08); */
+  z-index: 1;
+  transition: 0.3s;
+}
+  /* .balance-card:hover,
+  .card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 0 35px rgba(56,189,248,0.15);
+  } */
+
+.balance-card h3 {
+  color: #94a3b8;
+  margin-bottom: 0.5rem;
+}
+.balance-card p {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #22c55e;
+  /* text-shadow: 0 0 15px rgba(34,197,94,0.4); */
+}
+
+/* === Transaction List === */
+.txn-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.txn-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.75rem 1rem;
+  border-radius: 12px;
+  margin-bottom: 0.75rem;
+  background: rgba(51,65,85,0.4);
+  border: 1px solid rgba(255,255,255,0.05);
+  transition: 0.3s;
+}
+/* .txn-item:hover {
+  background: rgba(51,65,85,0.7);
+  transform: scale(1.02);
+  box-shadow: 0 0 12px rgba(56,189,248,0.2);
+} */
+.txn-item.sent .txn-amount { color: #ef4444; text-shadow: 0 0 10px rgba(239,68,68,0.5); }
+.txn-item.received .txn-amount { color: #22c55e; text-shadow: 0 0 10px rgba(34,197,94,0.5); }
+.txn-date { font-size: 0.75rem; color: #94a3b8; }
+.txn-text { color: #f1f5f9; }
+
+/* === Modal === */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 50;
+}
+.modal {
+  background: rgba(30,41,59,0.95);
+  padding: 2rem;
+  border-radius: 16px;
+  width: 320px;
+  text-align: center;
+  color: #f8fafc;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 0 25px rgba(56,189,248,0.2);
+}
+.modal h2 {
+  margin-bottom: 1rem;
+}
+.modal-actions {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 1.5rem;
+}
+.cancel-btn,
+.logout-confirm-btn {
+  padding: 0.5rem 1.2rem;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+  font-weight: 500;
+  transition: 0.3s;
+}
+.cancel-btn {
+  background: #334155;
+  color: #f8fafc;
+}
+.cancel-btn:hover {
+  background: #475569;
+}
+.logout-confirm-btn {
+  background: linear-gradient(45deg, #ef4444, #f97316);
+  color: white;
+  box-shadow: 0 0 12px rgba(239,68,68,0.4);
+}
+.logout-confirm-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 18px rgba(239,68,68,0.7);
+}
+
+/* === Responsive === */
+@media (max-width: 768px) {
+  .top-bar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+  .balance-card,
+  .card {
+    text-align: left;
+  }
+}
+/* === Animated Transaction Icons === */
+.txn-item {
+  position: relative;
+  overflow: hidden;
+}
+
+.txn-item::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 6px;
+  height: 80%;
+  border-radius: 4px;
+  background: transparent;
+  transition: 0.4s;
+}
+
+.txn-item.sent::before {
+  background: linear-gradient(to bottom, #ef4444, transparent);
+}
+.txn-item.received::before {
+  background: linear-gradient(to bottom, #22c55e, transparent);
+}
+
+/* Floating transaction animation on hover */
+.txn-item:hover {
+  transform: translateX(4px) translateY(-2px) scale(1.02);
+  box-shadow: 0 0 20px rgba(56,189,248,0.25);
+}
+
+/* === 3D Card Hover Effects === */
+/* .balance-card, .card {
+  transform-style: preserve-3d;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+} */
+/* .balance-card:hover, .card:hover {
+  transform: translateY(-5px) rotateX(3deg) rotateY(-3deg);
+  box-shadow: 0 20px 40px rgba(56,189,248,0.2);
+} */
+
+/* === Pulsing Glow Animation === */
+/* @keyframes pulse-glow {
+  0% { box-shadow: 0 0 8px rgba(56,189,248,0.2); }
+  50% { box-shadow: 0 0 18px rgba(56,189,248,0.4); }
+  100% { box-shadow: 0 0 8px rgba(56,189,248,0.2); }
+} */
+
+.txn-item:hover::before {
+  animation: pulse-glow 1.2s infinite;
+}
+
+/* Optional floating animation for entire transaction list */
+.txn-list:hover .txn-item {
+  transition: transform 0.3s ease;
+}
+/* === Transaction Item Layout With Icon === */
+.txn-left {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.txn-icon {
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+/* Sent / Received Icon Colors */
+.icon-sent {
+  color: #ef4444;  /* red */
+}
+.icon-received {
+  color: #22c55e;  /* green */
+}
+
+/* Pop on hover */
+.txn-item:hover .txn-icon {
+  transform: scale(1.3) rotate(8deg);
+}
+.balance-card {
+  background: linear-gradient(135deg, #1e293b, #0f172a);
+  color: white;
+  border-radius: 20px;
+  padding: 2rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  /* box-shadow: 0 0 25px rgba(0, 255, 200, 0.15); */
+  position: relative;
+  overflow: hidden;
+}
+
+/* Animated Shine Overlay */
+.balance-card::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+ 
+  transform: rotate(25deg);
+  /* animation: shine 5s infinite; */
+}
+/* 
+@keyframes shine {
+  0% { transform: translateX(-100%) rotate(25deg); }
+  100% { transform: translateX(100%) rotate(25deg); }
+} */
+
+.balance-amount {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #4ade80;
+  text-shadow: 0 0 10px rgba(74, 222, 128, 0.5);
+}
